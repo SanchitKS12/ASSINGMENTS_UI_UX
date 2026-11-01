@@ -1,0 +1,241 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f8fb;
+    color: #333;
+}
+
+header {
+    background-color: #2196a3;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 8px 0 0;
+}
+
+nav {
+    background-color: #333;
+    text-align: center;
+    padding: 12px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #ffd166;
+}
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.banner {
+    position: relative;
+    margin-top: 20px;
+}
+
+.banner img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.banner-text {
+    position: absolute;
+    top: 100px;
+    left: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.content,
+.tips,
+.places,
+.contact,
+.form-section {
+    background-color: white;
+    margin: 20px 0;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+h2 {
+    color: #2196a3;
+}
+
+
+li {
+    margin: 8px 0;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #aaa;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #2196a3;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+form {
+    max-width: 700px;
+    margin: auto;
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.radio-group,
+.checkbox-group {
+    margin: 10px 0;
+}
+
+.radio-group label,
+.checkbox-group label {
+    display: inline-block;
+    margin-right: 20px;
+    font-weight: normal;
+}
+
+.radio-group input,
+.checkbox-group input {
+    width: auto;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #2196a3;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #176b75;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+figure {
+    margin: 0;
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+}
+
+figure img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+figcaption {
+    padding: 10px;
+    font-weight: bold;
+}
+
+.social a {
+    display: inline-block;
+    background-color: #2196a3;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+.social a:hover {
+    background-color: #176b75;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+
+    nav a {
+        display: block;
+        margin: 8px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .banner img {
+        height: 250px;
+    }
+
+    .banner-text {
+        top: 50px;
+        left: 20px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+}

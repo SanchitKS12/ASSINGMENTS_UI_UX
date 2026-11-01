@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelGo - Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>TravelGo</h1>
+        <p>Book Your Trip</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="booking.html">Booking</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About Us</a>
+    </nav>
+
+    <main>
+
+        <section class="form-section">
+
+            <h2>Travel Booking Form</h2>
+
+            <form>
+
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name"
+                       placeholder="Enter your name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"
+                       placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone"
+                       placeholder="Enter phone number">
+
+                <label for="destination">Destination:</label>
+
+                <select id="destination" name="destination">
+                    <option value="">Select Destination</option>
+                    <option value="goa">Goa</option>
+                    <option value="manali">Manali</option>
+                    <option value="jaipur">Jaipur</option>
+                    <option value="kerala">Kerala</option>
+                </select>
+
+                <label for="package">Select Package:</label>
+
+                <select id="package" name="package">
+                    <option value="">Select Package</option>
+                    <option value="beach">Beach Holiday</option>
+                    <option value="mountain">Mountain Escape</option>
+                    <option value="royal">Royal Rajasthan</option>
+                    <option value="kerala">God's Own Country</option>
+                </select>
+
+                <label for="date">Travel Date:</label>
+                <input type="date" id="date" name="date">
+
+                <label for="return">Return Date:</label>
+                <input type="date" id="return" name="return">
+
+                <label for="people">Number of Travellers:</label>
+                <input type="number" id="people" name="people"
+                       min="1" max="20">
+
+                <p><strong>Travel Type:</strong></p>
+
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="travel_type" value="family">
+                        Family
+                    </label>
+
+                    <label>
+                        <input type="radio" name="travel_type" value="friends">
+                        Friends
+                    </label>
+
+                    <label>
+                        <input type="radio" name="travel_type" value="solo">
+                        Solo
+                    </label>
+                </div>
+
+                <p><strong>Additional Services:</strong></p>
+
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="hotel">
+                        Hotel
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="transport">
+                        Transportation
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="guide">
+                        Tour Guide
+                    </label>
+                </div>
+
+                <label for="message">Special Requests:</label>
+
+                <textarea id="message" name="message"
+                          rows="4"
+                          placeholder="Enter any special requests"></textarea>
+
+                <button type="submit">Submit Booking</button>
+                <button type="reset">Reset</button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TravelGo. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

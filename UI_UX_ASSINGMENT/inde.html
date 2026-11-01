@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="welcome"></h2>
+<button id="changeNameBtn">Change Name</button>
+
+<script>
+
+function setUserName() {
+
+    let myName = prompt("Please enter your name:");
+
+    if(myName) {
+        localStorage.setItem("username", myName);
+
+        document.getElementById("welcome").textContent =
+            "Welcome, " + myName;
+    }
+}
+
+window.onload = function() {
+
+    let storedName = localStorage.getItem("username");
+
+    if(storedName) {
+        document.getElementById("welcome").textContent =
+            "Welcome, " + storedName;
+    }
+    else {
+        setUserName();
+    }
+};
+
+document.getElementById("changeNameBtn").onclick =
+    function() {
+        setUserName();
+    };
+
+</script>
+</body>
+</html>
