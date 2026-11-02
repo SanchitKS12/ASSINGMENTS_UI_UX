@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanchit's To-Do List</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: white;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #a5b4fc;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .form-box {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #334155;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            background: #0f172a;
+            color: white;
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #818cf8;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            opacity: 0.85;
+        }
+
+        .add-btn {
+            width: 100%;
+            background: #6366f1;
+            color: white;
+            font-size: 15px;
+        }
+
+        .task {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .task h3 {
+            color: #c7d2fe;
+            margin-bottom: 8px;
+        }
+
+        .task p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+            white-space: pre-wrap;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: #64748b !important;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .complete-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .edit-btn {
+            background: #d97706;
+            color: white;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .task input, .task textarea {
+            margin-bottom: 10px;
+        }
+
+        .empty {
+            text-align: center;
+            color: #64748b;
+            padding: 25px;
+        }
+
+        @media (max-width: 480px) {
+            .actions button {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>My To-Do List</h1>
+        <p class="subtitle">Plan smart. Stay consistent. Get things done.</p>
+
+        <div class="form-box">
+            <input type="text" id="taskTitle"
+                   placeholder="Enter task title">
+
+            <textarea id="taskDescription"
+                      placeholder="Enter task description"></textarea>
+
+            <button class="add-btn" onclick="addTask()">
+                + Add Task
+            </button>
+        </div>
+
+        <div id="taskList">
+            <p class="empty">No tasks yet. Add your first task!</p>
+        </div>
+
+    </div>
+
+    <script>
+
+        const taskList = document.getElementById("taskList");
+
+        function addTask() {
+
+            const title = document.getElementById("taskTitle").value.trim();
+            const description = document.getElementById("taskDescription").value.trim();
+
+            if (title === "" || description === "") {
+                alert("Please enter both title and description!");
+                return;
+            }
+
+            const task = document.createElement("div");
+            task.className = "task";
+
+            const taskTitle = document.createElement("h3");
+            taskTitle.textContent = title;
+
+            const taskDescription = document.createElement("p");
+            taskDescription.textContent = description;
+
+            const actions = document.createElement("div");
+            actions.className = "actions";
+
+            // Mark as Completed button
+            const completeBtn = document.createElement("button");
+            completeBtn.className = "complete-btn";
+            completeBtn.textContent = "Mark as Completed";
+
+            completeBtn.onclick = function() {
+
+                taskTitle.classList.toggle("completed");
+                taskDescription.classList.toggle("completed");
+
+                if (taskTitle.classList.contains("completed")) {
+                    completeBtn.textContent = "Mark as Incomplete";
+                } else {
+                    completeBtn.textContent = "Mark as Completed";
+                }
+            };
+
+            // Edit button
+            const editBtn = document.createElement("button");
+            editBtn.className = "edit-btn";
+            editBtn.textContent = "Edit";
+
+            editBtn.onclick = function() {
+
+                if (editBtn.textContent === "Edit") {
+
+                    const titleInput = document.createElement("input");
+                    titleInput.value = taskTitle.textContent;
+
+                    const descriptionInput = document.createElement("textarea");
+                    descriptionInput.value = taskDescription.textContent;
+
+                    task.replaceChild(titleInput, taskTitle);
+                    task.replaceChild(descriptionInput, taskDescription);
+
+                    editBtn.textContent = "Save";
+
+                } else {
+
+                    const titleInput = task.querySelector("input");
+                    const descriptionInput = task.querySelector("textarea");
+
+                    if (titleInput.value.trim() === "" ||
+                        descriptionInput.value.trim() === "") {
+                        alert("Fields cannot be empty!");
+                        return;
+                    }
+
+                    taskTitle.textContent = titleInput.value.trim();
+                    taskDescription.textContent = descriptionInput.value.trim();
+
+                    task.replaceChild(taskTitle, titleInput);
+                    task.replaceChild(taskDescription, descriptionInput);
+
+                    editBtn.textContent = "Edit";
+                }
+            };
+
+            // Delete button
+            const deleteBtn = document.createElement("button");
+            deleteBtn.className = "delete-btn";
+            deleteBtn.textContent = "Delete";
+
+            deleteBtn.onclick = function() {
+                task.remove();
+
+                if (taskList.children.length === 0) {
+                    taskList.innerHTML =
+                        '<p class="empty">No tasks yet. Add your first task!</p>';
+                }
+            };
+
+            actions.appendChild(completeBtn);
+            actions.appendChild(editBtn);
+            actions.appendChild(deleteBtn);
+
+            task.appendChild(taskTitle);
+            task.appendChild(taskDescription);
+            task.appendChild(actions);
+
+            // Remove empty message when adding first task
+            if (taskList.querySelector(".empty")) {
+                taskList.innerHTML = "";
+            }
+
+            taskList.appendChild(task);
+
+            // Clear form
+            document.getElementById("taskTitle").value = "";
+            document.getElementById("taskDescription").value = "";
+        }
+
+    </script>
+
+</body>
+</html>
